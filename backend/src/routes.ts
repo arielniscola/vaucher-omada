@@ -1,5 +1,9 @@
 import { AuthenticationController } from "./controllers/authentication";
+import CompanyController from "./controllers/compay";
+import ConfigurationController from "./controllers/configuration";
+import DeviceController from "./controllers/device";
 import UserController from "./controllers/user";
+import VaucherController from "./controllers/vaucher";
 import { defineRoutes } from "./routes/index";
 
 /**
@@ -37,6 +41,73 @@ const routes = defineRoutes([
     label: "Usuarios",
     method: "post",
     controller: AuthenticationController.login,
+    auth: false,
+  },
+  // Configuracion
+  {
+    path: "/settings",
+    label: "Configuraciones",
+    method: "put",
+    controller: ConfigurationController.update,
+    auth: false,
+  },
+  {
+    path: "/settings",
+    label: "Configuraciones",
+    method: "get",
+    controller: ConfigurationController.find,
+    auth: false,
+  },
+  // Vaucher
+  {
+    path: "/vauchers",
+    label: "Tickets",
+    method: "get",
+    controller: VaucherController.find,
+    auth: false,
+  },
+  {
+    path: "/vauchers",
+    label: "Tickets",
+    method: "post",
+    controller: VaucherController.create,
+    auth: false,
+  },
+  // Compañias
+  {
+    path: "/companies",
+    label: "Compañias",
+    method: "post",
+    controller: CompanyController.create,
+    auth: false,
+  },
+  {
+    path: "/companies",
+    label: "Compañias",
+    method: "get",
+    controller: CompanyController.find,
+    auth: false,
+  },
+  {
+    path: "/companies",
+    label: "Compañias",
+    method: "put",
+    controller: CompanyController.update,
+    auth: false,
+  },
+  // Devices
+  {
+    path: "/devices",
+    label: "Dispositivos",
+    method: "post",
+    controller: DeviceController.create,
+    auth: false,
+  },
+  {
+    path: "/devices",
+    label: "Dispositivos",
+    method: "get",
+    controller: DeviceController.find,
     auth: false,
   },
 ]);

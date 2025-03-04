@@ -3,11 +3,11 @@ import { createModel, createSchema } from ".";
 export interface ICompany {
   code: string;
   companyName: string;
-  direction: string;
+  address: string;
   companyNumber: string;
-  type: string;
   cellphone: string;
   active: boolean;
+  website: string;
 }
 
 const CompanySchema = createSchema<ICompany>({
@@ -19,17 +19,13 @@ const CompanySchema = createSchema<ICompany>({
     type: String,
     required: true,
   },
-  direction: {
+  address: {
     type: String,
     required: false,
   },
   companyNumber: {
     type: String,
-    required: true,
-  },
-  type: {
-    type: String,
-    required: true,
+    required: false,
   },
   cellphone: {
     type: String,
@@ -39,6 +35,10 @@ const CompanySchema = createSchema<ICompany>({
     type: Boolean,
     required: true,
     default: true,
+  },
+  website: {
+    type: String,
+    required: false,
   },
 });
 

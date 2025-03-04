@@ -1,5 +1,6 @@
 import { insertManyOptions, Service } from ".";
 import { CompanyModel, ICompany } from "../models/company";
+import { configurationService } from "./configuration";
 
 export class CompanyService extends Service<ICompany> {
   constructor() {
@@ -18,7 +19,8 @@ export class CompanyService extends Service<ICompany> {
       company = await super.insertOne(data, {
         ...options,
       });
-
+      // Creamos config por defecto
+      await configurationService.createConfigByDefault(company.code);
       return company;
     } catch (e) {
       console.error(e);
